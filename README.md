@@ -64,35 +64,29 @@ EXCEL-TO-MARKDOWN
 
 ## 🚀 Installation
 
-### **Prerequisites**
-
-- **Python 3.7+**: Ensure you have Python installed. You can download it from [python.org](https://www.python.org/downloads/).
-- **Poetry**: Python dependency management tool. Install it using the following command:
-
-  ```bash
-  curl -sSL https://install.python-poetry.org | python3 -
-  ```
-
-### **Clone the Repository**
+You can install `excel-to-markdown` directly from this repository using `pip`:
 
 ```bash
-git clone https://github.com/yourusername/EXCEL-TO-MARKDOWN.git
-cd EXCEL-TO-MARKDOWN
+pip install git+https://github.com/devin-liu/excel-to-markdown.git
 ```
+*Note: This assumes the repository URL is `github.com/devin-liu/excel-to-markdown`.*
 
-### **Set Up the Virtual Environment**
 
-Poetry manages virtual environments automatically. To install dependencies:
+### For Development
 
-```bash
-poetry install
-```
+If you want to contribute to the project, it is recommended to use [Poetry](https://python-poetry.org/) for managing dependencies and the development environment.
 
-To activate the virtual environment:
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/devin-liu/excel-to-markdown.git
+    cd excel-to-markdown
+    ```
 
-```bash
-poetry shell
-```
+2.  **Install dependencies with Poetry:**
+    ```bash
+    poetry install
+    ```
+This will create a virtual environment and install all the necessary dependencies.
 
 ## 📋 Usage
 
@@ -108,26 +102,20 @@ poetry shell
 
 ### **Running the Localhost Server**
 
-You can also start a localhost server for real-time editing using:
+You can also start a localhost server for real-time editing using the `app` command:
 
 ```bash
-poetry run app
+app
 ```
 
 This will start a server on your localhost, allowing you to make edits to your spreadsheets locally and see immediate updates.
 
 ### **Running the CLI Script** 
 
-Execute the main script over CLI using the following command:
+Execute the main script over CLI using the `excel-to-markdown` command:
 
 ```bash
-python -m excel_to_markdown.main data/input data/output
-```
-
-**Example:**
-
-```bash
-python -m excel_to_markdown.main data/input data/output
+excel-to-markdown data/input data/output
 ```
 
 ### **Interactive Prompts**
@@ -187,13 +175,20 @@ Please ensure that your contributions adhere to the existing code style and incl
 
 ## 🧪 Testing
 
-Unit tests are located in the `tests/` directory. To run the tests:
+Unit tests are located in the `tests/` directory. To run the tests, first install the development dependencies:
 
+```bash
+pip install -e .[dev]
+```
+Then run pytest:
+```bash
+pytest
+```
+
+For contributors using Poetry, you can still run the tests with:
 ```bash
 poetry run pytest
 ```
-
-Ensure that you have the virtual environment activated via Poetry.
 
 ## 📜 License
 

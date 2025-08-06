@@ -11,7 +11,7 @@ from pathlib import Path
 
 def create_aggrid(df, sheet_name, selection_mode='multiple'):
     gb = GridOptionsBuilder.from_dataframe(df)
-    gb.configure_default_column(editable=True)  # Make all columns editable
+    gb.configure_default_column(editable=True, pinnable=True, lockPinned=True)  # Make all columns editable and pinnable
     gb.configure_selection(selection_mode=selection_mode, use_checkbox=True)
 
     grid_options = gb.build()

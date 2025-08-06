@@ -11,11 +11,27 @@ from pathlib import Path
 
 def create_aggrid(df, sheet_name, selection_mode='multiple'):
     gb = GridOptionsBuilder.from_dataframe(df)
-    gb.configure_default_column(editable=True, pinnable=True, lockPinned=True)  # Make all columns editable and pinnable
+    gb.configure_default_column(editable=True)
     gb.configure_selection(selection_mode=selection_mode, use_checkbox=True)
-
+    
+    # Enable column pinning
+    gb.configure_grid_options(enableRangeSelection=True)
+    gb.configure_default_column(
+        editable=True,
+        resizable=True,
+        sortable=True,
+        filter=True,
+        pinned=None,  # This allows columns to be pinned
+    )
+    
+    # Enable side bar for column management (optional but helpful)
+    gb.configure_side_bar()
+    
     grid_options = gb.build()
-
+    
+    # Add pinning capabilities to grid options
+    grid_options['enableRangeSelection'] = True
+    
     grid_response = AgGrid(
         df,
         gridOptions=grid_options,
@@ -25,7 +41,8 @@ def create_aggrid(df, sheet_name, selection_mode='multiple'):
         allow_unsafe_jscode=True,
         reload_data=False,
         key=f"{sheet_name}_aggrid",
-        editable=True,  # Enable editing for the entire grid
+        editable=True,
+        enable_enterprise_modules=True,  # This might be needed for advanced features
     )
 
     return grid_response
@@ -69,7 +86,7 @@ def row_to_doc():
         st.write(selected_rows_df)
 
     else:
-        st.warning("Please select at least one row and pin at least one column.")
+        st.warning("Please select pin at least one column and then select at least one row.")
         return
 
     # Column selection

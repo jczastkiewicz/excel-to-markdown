@@ -34,9 +34,14 @@ dev = [
     "pytest-mock>=3.0",
     "build",
     "twine",
-    "poetry"
+    "poetry",
+    "ruff>=0.6.0"
 ]
 
 [tool.setuptools]
 py-modules = ["run_streamlit"]
 packages = ["excel_to_markdown", "src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]

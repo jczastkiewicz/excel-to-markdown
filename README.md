@@ -146,6 +146,25 @@ Execute the main script over CLI using the `excel-to-markdown` command:
 excel-to-markdown data/input data/output
 ```
 
+### **Running Commands with Poetry**
+
+If you installed via `pip` (globally or in an activated venv), `app` and `excel-to-markdown` are already on your `PATH` — no prefix needed.
+
+If instead you installed dependencies with `poetry install` (see [Installation](#-installation)), the `app` and `excel-to-markdown` commands live inside Poetry's isolated virtualenv, not your shell's `PATH`. Prefix them with `poetry run`:
+
+```bash
+poetry run app
+poetry run excel-to-markdown data/input data/output
+```
+
+Alternatively, activate the virtualenv once per shell session and drop the prefix:
+
+```bash
+poetry env activate
+app
+excel-to-markdown data/input data/output
+```
+
 ### **Interactive Prompts**
 
 For each sheet in each Excel file:

@@ -217,6 +217,20 @@ pip install -e .[dev]
 pytest
 ```
 
+## 🔍 Linting
+
+[Ruff](https://docs.astral.sh/ruff/) checks for unused imports/variables, redefinitions, and whitespace issues (rules `E`, `F`, `W`; `E501` line-length is ignored). It runs automatically in CI (`check-quality` workflow) on every push/PR to `main`. Run it locally with:
+
+```bash
+poetry run ruff check .
+```
+
+Add `--fix` to auto-apply the safe fixes:
+
+```bash
+poetry run ruff check . --fix
+```
+
 ## 📜 License
 
 This project is licensed under the [GPLv3](LICENSE).
